@@ -110,7 +110,7 @@ namespace MagicScreenAPI.Controllers
             {
                 return this.Jsonp(new { ErrorCode = 0x01, ErrMsg = ex.Message });
             }
-        }
+        } 
 
         // 用户活动关系表
         //api/relationoperation?operationtype=2&userid=A6B507EC-2F89-4744-9538-3A055C895C83&partyid=A6B507EC-2F89-4744-9538-3A055C895C83 插入
@@ -310,6 +310,8 @@ namespace MagicScreenAPI.Controllers
                             string pweddingwall = JsonConvert.SerializeObject(ts6);
 
 
+                            //判断partytime是不是空 如果是空则改成今天
+                            if (string.IsNullOrEmpty(partytime)) { partytime = DateTime.Today.ToString(); }
 
                             string sql2 = @"INSERT INTO [PartyBasicInfo] with(rowlock)
                                             ([PartyID],[PartySchema],[PartyTime],[PartyAddress],[PartyHeadCount],[PartyLimitCount]
