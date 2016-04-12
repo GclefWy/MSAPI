@@ -317,7 +317,7 @@ namespace MagicScreenAPI.Controllers
                                             ([PartyID],[PartySchema],[PartyTime],[PartyAddress],[PartyHeadCount],[PartyLimitCount]
                                              ,[PartyLinkman],[Mobile],[PartyInviteCode],[PartyState],[CreateTime])
                                             VALUES ('" + partyid + "','" + partyschema + "','" + partytime + "','"
-                                            + partyaddress + "','20','" + partylimitcount + "','" + partylinkman + "','" + mobile + "','"
+                                            + partyaddress +partyheadcount+ "','20','"  + "','" + partylinkman + "','" + mobile + "','"
                                             + partyinvitecode + "','" + partystate + "'," + @"getdate()); 
                                             insert into PartyStateInfo with(rowlock) (PartyID,[PartySignWall]
            ,[PartyStartWall]
@@ -555,6 +555,17 @@ select * from t1 where cc=1  ";
                                             ,[UpdateTime] = getdate() " +
                                             @"where status =1 and partyid = '" + partyid + "' and participantid ='" + participantid + "'";
                             SimpleDataHelper.Excsql(SimpleDataHelper.MSConnectionString, sql3);
+
+                            string sqlqureysceneid = string.Format(@"select id from PartyBasicInfo where partyid = '{0}'",partyid);
+
+                            DataSet resultsceneid = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sqlqureysceneid);
+                            string sid = resultsceneid.Tables[0].Rows[0][0].ToString();
+
+                            string sql3plus = string.Format(@"update [UserSign]
+                                            set 
+                                            [status] = '{2}'
+                                             where Sceneid = '{0}' and openid ='{1}'",sid,participantid,participantstate);
+                            SimpleDataHelper.Excsql(SimpleDataHelper.MSConnectionString, sql3plus);
 
                             return this.Jsonp(new
                             {
