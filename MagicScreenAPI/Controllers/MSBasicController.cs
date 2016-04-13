@@ -563,8 +563,8 @@ select * from t1 where cc=1  ";
 
                             string sql3plus = string.Format(@"update [UserSign]
                                             set 
-                                            [status] = '{2}'
-                                             where Sceneid = '{0}' and openid ='{1}'",sid,participantid,participantstate);
+                                            [ParticipantState] = '{2}'
+                                             where Sceneid = '{0}' and openid ='{1}'", sid,participantid,participantstate);
                             SimpleDataHelper.Excsql(SimpleDataHelper.MSConnectionString, sql3plus);
 
                             return this.Jsonp(new
@@ -1189,7 +1189,7 @@ select * from t1 where cc=1  ";
       ,convert(varchar(30),a.[Rowtime],121) as rowtime,a.sendmessage,
 a.id from PartyWallText a,
 UserSign b 
-where a.status =1 and b.status = 1 and a.openid=b.openid and a.SceneID=b.SceneID
+where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
  and a.sceneid='" + id + "' order by rowtime desc";
                         DataSet result1 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql1);
 
@@ -1224,7 +1224,7 @@ where a.status =1 and b.status = 1 and a.openid=b.openid and a.SceneID=b.SceneID
       ,convert(varchar(30),a.[Rowtime],121) as rowtime,a.sendmessage,
 a.id from PartyWallText a,
 UserSign b 
-where a.status =1 and b.status = 1 and a.openid=b.openid and a.SceneID=b.SceneID
+where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
  and a.sceneid='" + id + "' order by displaycount asc,rowtime desc";
                         DataSet result2 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql2);
 
@@ -1301,7 +1301,7 @@ where a.status =1 and b.status = 1 and a.openid=b.openid and a.SceneID=b.SceneID
       a.Url,a.Alt,
 a.id from PartyWallImage a,
 UserSign b 
-where a.status =1 and b.status = 1 and a.openid=b.openid and a.SceneID=b.SceneID
+where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
  and a.sceneid='" + id + "' order by rowtime desc";
                         DataSet result1 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql1);
 
@@ -1337,7 +1337,7 @@ where a.status =1 and b.status = 1 and a.openid=b.openid and a.SceneID=b.SceneID
       a.Url,a.Alt,
 a.id from PartyWallImage a,
 UserSign b 
-where a.status =1 and b.status = 1 and a.openid=b.openid and a.SceneID=b.SceneID
+where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
  and a.sceneid='" + id + "' order by displaycount asc,rowtime desc";
                         DataSet result2 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql2);
 
