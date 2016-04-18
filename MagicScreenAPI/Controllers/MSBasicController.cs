@@ -1301,7 +1301,7 @@ where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.ope
       a.Url,a.Alt,
 a.id from PartyWallImage a,
 UserSign b 
-where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
+where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID and Url <> 'http://7xqyc8.com1.z0.glb.clouddn.com/FncNeS8C0jK7bl_Y6aYn8-u2h-C2'
  and a.sceneid='" + id + "' order by rowtime desc";
                         DataSet result1 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql1);
 
@@ -1337,7 +1337,7 @@ where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.ope
       a.Url,a.Alt,
 a.id from PartyWallImage a,
 UserSign b 
-where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
+where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID and Url <> 'http://7xqyc8.com1.z0.glb.clouddn.com/FncNeS8C0jK7bl_Y6aYn8-u2h-C2'
  and a.sceneid='" + id + "' order by displaycount asc,rowtime desc";
                         DataSet result2 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql2);
 
