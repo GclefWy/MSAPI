@@ -1217,7 +1217,7 @@ where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.ope
 
                         querypartyid1 = querypartyid1.Substring(0, querypartyid1.Length - 1);
 
-                        string sql2 = @"select top 16 b.[OpenID]
+                        string sql2 = @"select top 12 b.[OpenID]
       ,b.[NickName]
       ,b.[HeadUrl]
       ,b.[SceneID]
