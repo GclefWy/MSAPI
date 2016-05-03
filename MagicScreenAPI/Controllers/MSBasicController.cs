@@ -342,7 +342,7 @@ namespace MagicScreenAPI.Controllers
                                             ([PartyID],[PartySchema],[PartyTime],[PartyAddress],[PartyHeadCount],[PartyLimitCount]
                                              ,[PartyLinkman],[Mobile],[PartyInviteCode],[PartyState],[CreateTime])
                                             VALUES ('" + partyid + "','" + partyschema + "','" + partytime + "','"
-                                            + partyaddress +partyheadcount+ "','20','"  + "','" + partylinkman + "','" + mobile + "','"
+                                            + partyaddress +partyheadcount+ "',20,'"  + "','" + partylinkman + "','" + mobile + "','"
                                             + partyinvitecode + "','" + partystate + "'," + @"getdate()); 
                                             insert into PartyStateInfo with(rowlock) (PartyID,[PartySignWall]
            ,[PartyStartWall]
