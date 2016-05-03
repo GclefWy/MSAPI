@@ -78,6 +78,31 @@ namespace MagicScreenAPI.Controllers
                             });
                         }
 
+                    case "3"://更新
+                        if (username == "" || userpwd == "")
+                        {
+                            return this.Jsonp(new
+                            {
+                                ErrorCode = 0x02,
+                                ErrMsg = "更新缺少必要条件"
+                            });
+                        }
+                        else
+                        {
+                            string sql3 = @"update UserTable
+                                            set userpwd= '" + userpwd + @"',updatetime = getdate() where username = '" + username + "'" ;
+
+                            
+
+                            SimpleDataHelper.Excsql(SimpleDataHelper.MSConnectionString, sql3);
+
+                            return this.Jsonp(new
+                            {
+                                ErrorCode = 0x00,
+                                ErrMsg = "更新成功"
+                            });
+                        }
+
 
                     case "4"://验证
 
