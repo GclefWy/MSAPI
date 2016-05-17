@@ -298,7 +298,7 @@ namespace MagicScreenAPI.Controllers
    select 3 as id ,moduleid,templetid,templeturl from  [TempletIndex] where TempletID='B656120E-77EE-47A8-9F64-D9C621D86762'
    --照片墙
    union
-   select 4 as id ,moduleid,templetid,templeturl from  [TempletIndex] where TempletID='1B559D8C-F1BE-40E8-9C6E-09D453FEC289'
+   select 4 as id ,moduleid,templetid,templeturl from  [TempletIndex] where TempletID='4D4C0A2F-7D28-4CBC-AE1A-17ECC494BD77'
 
    --弹幕
    union
@@ -359,7 +359,7 @@ namespace MagicScreenAPI.Controllers
 
                             string wxid = Common.ParamEncrypt(Convert.ToInt32(wxresult.Tables[0].Rows[0][0].ToString()));
 
-                            string sqlupdate = @"update PartyBasicInfo set PartyWXID = '" + wxid + "' where partyid = '" + partyid + "'";
+                            string sqlupdate = @"update PartyBasicInfo set PartyWXID = '" + wxid + "',PartyLimitCount=20  where partyid = '" + partyid + "'";
 
                             SimpleDataHelper.Excsql(SimpleDataHelper.MSConnectionString, sqlupdate);
 
