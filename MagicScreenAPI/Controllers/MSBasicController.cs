@@ -1207,15 +1207,7 @@ select * from t1 where cc=1  ";
 
                         querypartyid = querypartyid.Substring(0, querypartyid.Length - 1);
 
-                        string sql1 = @"select  b.[OpenID]
-      ,b.[NickName]
-      ,b.[HeadUrl]
-      ,b.[SceneID]
-      ,convert(varchar(30),a.[Rowtime],121) as rowtime,a.sendmessage,
-a.id from PartyWallText a,
-UserSign b 
-where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
- and a.sceneid='" + id + "' order by rowtime desc";
+                        string sql1 = @"select * from dbo.GetTextWallMessageAll(" + id + ")"; ;
                         DataSet result1 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql1);
 
                         string sqlupdate = @"update PartyWallText set DisplayCount = DisplayCount+1 where sceneid ='"+id+"'";
@@ -1233,7 +1225,7 @@ where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.ope
                     case "2"://新增
 
                         string[] splitpartyid1 = id.Split(new Char[] { ',' });
-                        string querypartyid1 = "";
+                        string querypartyid1 = "";  
 
                         for (int i = 0; i < splitpartyid1.Length; i++)
                         {
@@ -1242,15 +1234,7 @@ where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.ope
 
                         querypartyid1 = querypartyid1.Substring(0, querypartyid1.Length - 1);
 
-                        string sql2 = @"select top 12 b.[OpenID]
-      ,b.[NickName]
-      ,b.[HeadUrl]
-      ,b.[SceneID]
-      ,convert(varchar(30),a.[Rowtime],121) as rowtime,a.sendmessage,
-a.id from PartyWallText a,
-UserSign b 
-where a.status =1 and b.status = 1 and b.ParticipantState = 1 and a.openid=b.openid and a.SceneID=b.SceneID
- and a.sceneid='" + id + "' order by displaycount asc,rowtime desc";
+                        string sql2 = @"select * from dbo.GetTextWallMessageNew("+id+")";
                         DataSet result2 = SimpleDataHelper.Query(SimpleDataHelper.MSConnectionString, sql2);
 
                         string tid = "";
